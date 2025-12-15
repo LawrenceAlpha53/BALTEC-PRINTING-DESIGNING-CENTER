@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us - BALTEC Printing and Designing Center</title>
-  <link rel="stylesheet" href="css/stylesheet.css">
-  <style>
-    @media(max-width:768px){
-      .nav { display:none; position:absolute; top:80px; right:20px; flex-direction:column; padding:20px; background:#fff; border-radius:14px; }
-      .nav.active { display:flex; }
-      .menu-btn { display:block; font-size:28px; cursor:pointer; }
-      .header-inner { padding:10px 15px; }
-      .logo-img { width:40px; }
-    }
-    .form-status { margin-top:10px; font-weight:bold; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us - BALTEC Printing and Designing Center</title>
+<style>
+  body { font-family: Arial, sans-serif; margin:0; padding:0; }
+  .glass { background: rgba(255,255,255,0.9); padding:20px; border-radius:14px; box-shadow:0 4px 10px rgba(0,0,0,0.1); margin-bottom:20px; }
+  .header-inner { display:flex; justify-content:space-between; align-items:center; padding:10px 20px; background:#f4f4f4; position:relative; }
+  .logo-text { display:inline-block; margin-left:10px; }
+  .nav a { margin:0 10px; text-decoration:none; color:#333; }
+  .menu-btn { display:none; cursor:pointer; font-size:28px; }
+  .hero { background:#e0e0e0; padding:60px 20px; text-align:center; }
+  .hero h1 { margin:0 0 10px; }
+  .hero p { margin:0; }
+  .container { max-width:1200px; margin:0 auto; padding:20px; }
+  .grid-2 { display:flex; flex-wrap:wrap; gap:20px; }
+  .grid-2 > div { flex:1 1 45%; min-width:280px; }
+  .contact-info ul { list-style:none; padding:0; }
+  .contact-info ul li { margin-bottom:8px; }
+  input, textarea, button { width:100%; padding:10px; margin:6px 0; border-radius:6px; border:1px solid #ccc; box-sizing:border-box; }
+  button { cursor:pointer; background:#ffcc00; border:none; }
+  .form-status { font-weight:bold; margin-top:10px; }
+  @media(max-width:768px){
+    .nav { display:none; flex-direction:column; position:absolute; top:70px; right:20px; background:#fff; padding:15px; border-radius:12px; }
+    .nav.active { display:flex; }
+    .menu-btn { display:block; }
+  }
+</style>
 </head>
 <body>
 
-<!-- ================= HEADER ================= -->
 <header class="header">
-  <div class="header-inner glass">
+  <div class="header-inner">
     <div class="logo">
-      <img src="assets/images/logo.png" alt="BALTEC Logo" class="logo-img">
+      <img src="assets/images/logo.png" alt="BALTEC Logo" width="50">
       <div class="logo-text">
-        <strong>BALTEC</strong>
+        <strong>BALTEC</strong><br>
         <span>Printing & Designing Center</span>
       </div>
     </div>
@@ -37,27 +49,20 @@
       <a href="contact.html" class="active">Contact</a>
     </nav>
 
-    <!-- MOBILE MENU TOGGLE INLINE -->
     <div class="menu-btn" onclick="document.getElementById('nav').classList.toggle('active')">☰</div>
   </div>
 </header>
 
-<!-- ================= HERO ================= -->
-<section class="hero contact-hero">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h1>Contact BALTEC</h1>
-    <p>We would love to hear from you. Get in touch with us for professional printing, branding, or digital solutions.</p>
-  </div>
+<section class="hero">
+  <h1>Contact BALTEC</h1>
+  <p>We would love to hear from you. Get in touch with us for professional printing, branding, or digital solutions.</p>
 </section>
 
-<!-- ================= CONTACT INFO & FORM ================= -->
-<section class="section contact-section">
-  <div class="container grid-2">
-    <!-- Contact Info -->
+<section class="container">
+  <div class="grid-2">
     <div class="glass contact-info">
       <h2>Reach Out to Us</h2>
-      <p>BALTEC Printing and Designing Center is a fully registered professional company. Contact us using the details below or send us a message directly through the form.</p>
+      <p>BALTEC Printing and Designing Center is fully registered and professional. Contact us below or send a message via the form.</p>
       <ul>
         <li><strong>Address:</strong> Kampala, Uganda</li>
         <li><strong>Email:</strong> info@baltecprint.com</li>
@@ -65,86 +70,81 @@
         <li><strong>Working Hours:</strong> Mon - Sat: 8:00 AM - 6:00 PM</li>
       </ul>
       <h3>Connect With Us</h3>
-      <p>
-        <a href="https://wa.me/256XXX" target="_blank">WhatsApp</a> | 
-        <a href="mailto:info@baltecprint.com">Email</a>
-      </p>
+      <p><a href="https://wa.me/256XXX" target="_blank">WhatsApp</a> | <a href="mailto:info@baltecprint.com">Email</a></p>
     </div>
 
-    <!-- Contact Form -->
     <div class="glass contact-form">
       <h2>Send Us a Message</h2>
-      <form id="contactForm" onsubmit="submitContactForm(event)">
+      <form onsubmit="submitContactForm(event)">
         <input type="text" name="name" placeholder="Full Name" required>
         <input type="email" name="email" placeholder="Email Address" required>
         <input type="text" name="subject" placeholder="Subject" required>
         <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
-        <button type="submit" class="btn primary">Send Message</button>
+        <button type="submit">Send Message</button>
       </form>
       <p class="form-status" id="formStatus"></p>
     </div>
   </div>
 </section>
 
-<!-- ================= MAP ================= -->
 <section class="section map-section">
   <div class="container">
     <h2 class="center">Find Us Here</h2>
-    <iframe src="https://maps.google.com/maps?q=Kampala%20Uganda&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="400" style="border:0;border-radius:16px;" allowfullscreen="" loading="lazy"></iframe>
+    <iframe 
+      src="https://www.google.com/maps?q=Magnet+Plaza,+Lweza,+Kajjansi,+Uganda&output=embed"
+      width="100%" 
+      height="400" 
+      style="border:0; border-radius:16px;" 
+      allowfullscreen="" 
+      loading="lazy">
+    </iframe>
+    <p class="center">📍 Magnet Plaza, Lweza – Kajjansi, Entebbe Road, Uganda</p>
   </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
-<footer class="footer">
-  <div class="footer-container">
-    <div>
-      <h3>BALTEC</h3>
-      <p>BALTEC PRINTING AND DESIGNING CENTER is a professional and fully registered company offering printing, branding, and digital services.</p>
-    </div>
-    <div>
-      <h4>Services</h4>
-      <ul>
-        <li>Large Format Printing</li>
-        <li>Graphic Design</li>
-        <li>Branding</li>
-        <li>Website Development</li>
-      </ul>
-    </div>
-    <div>
-      <h4>Contact</h4>
-      <p>Email: info@baltecprint.com</p>
-      <p>Phone: +256 XXX XXX XXX</p>
-      <p>Uganda</p>
-    </div>
+
+
+<footer class="glass container">
+  <div>
+    <h3>BALTEC</h3>
+    <p>Professional and fully registered company offering printing, branding, and digital services.</p>
   </div>
-  <div class="footer-bottom">
-    © 2025 BALTEC Printing and Designing Center. All Rights Reserved.
+  <div>
+    <h4>Services</h4>
+    <ul>
+      <li>Large Format Printing</li>
+      <li>Graphic Design</li>
+      <li>Branding</li>
+      <li>Website Development</li>
+    </ul>
+  </div>
+  <div>
+    <h4>Contact</h4>
+    <p>Email: info@baltecprint.com</p>
+    <p>Phone: +256 XXX XXX XXX</p>
+    <p>Uganda</p>
   </div>
 </footer>
 
-<!-- ================= INLINE JS ================= -->
 <script>
-  // CONTACT FORM INLINE HANDLER
-  function submitContactForm(e){
-    e.preventDefault();
-    const form = e.target;
-    const status = document.getElementById('formStatus');
+function submitContactForm(e){
+  e.preventDefault();
+  const form = e.target;
+  const status = document.getElementById('formStatus');
+  const name = form.name.value.trim();
+  const email = form.email.value.trim();
+  const subject = form.subject.value.trim();
+  const message = form.message.value.trim();
 
-    // Simple validation and fake submission
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const subject = form.subject.value.trim();
-    const message = form.message.value.trim();
-
-    if(name && email && subject && message){
-      status.style.color = 'green';
-      status.textContent = "Thank you, your message has been sent!";
-      form.reset();
-    } else {
-      status.style.color = 'red';
-      status.textContent = "Please fill in all fields before submitting.";
-    }
+  if(name && email && subject && message){
+    status.style.color = 'green';
+    status.textContent = "Thank you, your message has been sent!";
+    form.reset();
+  } else {
+    status.style.color = 'red';
+    status.textContent = "Please fill in all fields before submitting.";
   }
+}
 </script>
 
 </body>
