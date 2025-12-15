@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - BALTEC Printing and Designing Center</title>
+  <link rel="stylesheet" href="css/stylesheet.css">
+  <style>
+    /* MOBILE MENU INLINE STYLES */
+    @media(max-width:768px){
+      .nav { display:none; position:absolute; top:80px; right:20px; flex-direction:column; padding:20px; background:#fff; border-radius:14px; }
+      .nav.active { display:flex; }
+      .menu-btn { display:block; font-size:28px; cursor:pointer; }
+      .hero h1 { font-size:24px; }
+      .hero p { font-size:16px; }
+      .header-inner { padding:10px 15px; }
+      .logo-img { width:40px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="header-inner glass">
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="BALTEC Logo" class="logo-img">
+      <div class="logo-text">
+        <strong>BALTEC</strong>
+        <span>Printing & Designing Center</span>
+      </div>
+    </div>
+
+    <nav class="nav" id="nav">
+    <a href="index.html" class="active">Home</a>
+      <a href="/abouts.html">About Us</a>
+      <a href="/services.html">Services</a>
+      <a href="/Portifolo.html">Portfolio</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+
+    <!-- INLINE JS TOGGLE -->
+    <div class="menu-btn" onclick="document.getElementById('nav').classList.toggle('active')">☰</div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero portfolio-hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Our Portfolio</h1>
+    <p>Take a look at some of the projects we have delivered. From printing to branding and digital solutions, our work speaks for itself.</p>
+  </div>
+</section>
+
+<!-- ================= PORTFOLIO GALLERY ================= -->
+<section class="section portfolio">
+  <div class="container">
+    <div class="grid-3 gallery">
+      <div class="gallery-card glass" data-title="Corporate Branding" data-desc="Complete corporate branding including logos, stationery, and banners.">
+        <img src="assets/images/work1.jpg" alt="Corporate Branding">
+      </div>
+      <div class="gallery-card glass" data-title="Event Backdrop" data-desc="Custom backdrops, banners, and standees for conferences and events.">
+        <img src="assets/images/work2.jpg" alt="Event Backdrop">
+      </div>
+      <div class="gallery-card glass" data-title="Website Development" data-desc="Responsive websites for startups and businesses with modern design.">
+        <img src="assets/images/work3.jpg" alt="Website Development">
+      </div>
+      <div class="gallery-card glass" data-title="Marketing Flyers" data-desc="Creative flyers and leaflets designed to engage audiences and boost sales.">
+        <img src="assets/images/work4.jpg" alt="Marketing Flyers">
+      </div>
+      <div class="gallery-card glass" data-title="Vehicle Branding" data-desc="Professional vehicle wraps to promote brands on the move.">
+        <img src="assets/images/work5.jpg" alt="Vehicle Branding">
+      </div>
+      <div class="gallery-card glass" data-title="Large Format Banners" data-desc="High-quality roll-ups and banners for exhibitions and events.">
+        <img src="assets/images/work6.jpg" alt="Large Format Banners">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MODAL / LIGHTBOX ================= -->
+<div class="modal" id="modal">
+  <span class="close" id="modalClose" onclick="document.getElementById('modal').style.display='none'">&times;</span>
+  <img class="modal-img" id="modalImg" src="" alt="">
+  <div class="modal-caption">
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+  </div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="footer-container">
+    <div>
+      <h3>BALTEC</h3>
+      <p>BALTEC PRINTING AND DESIGNING CENTER is a professional and fully registered company offering printing, branding, and digital services.</p>
+    </div>
+
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li>Large Format Printing</li>
+        <li>Graphic Design</li>
+        <li>Branding</li>
+        <li>Website Development</li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Contact</h4>
+      <p>Email: info@baltecprint.com</p>
+      <p>Phone: +256 XXX XXX XXX</p>
+      <p>Uganda</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 BALTEC Printing and Designing Center. All Rights Reserved.
+  </div>
+</footer>
+
+<!-- ================= INLINE JS ================= -->
+<script>
+  // SCROLL ANIMATION
+  const sections = document.querySelectorAll('.section');
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.classList.add('visible');}
+    });
+  },{threshold:0.2});
+  sections.forEach(section=>observer.observe(section));
+
+  // PORTFOLIO MODAL
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modalImg');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalDesc = document.getElementById('modalDesc');
+
+  document.querySelectorAll('.gallery-card').forEach(card=>{
+    card.addEventListener('click',()=>{
+      modal.style.display='block';
+      modalImg.src = card.querySelector('img').src;
+      modalTitle.textContent = card.dataset.title;
+      modalDesc.textContent = card.dataset.desc;
+    });
+  });
+
+  window.addEventListener('click', e=>{
+    if(e.target===modal) modal.style.display='none';
+  });
+</script>
+
+</body>
+</html>
